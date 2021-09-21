@@ -12,14 +12,14 @@
 //==============================================================================
 BasicGeneratorAudioProcessor::BasicGeneratorAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
-     : AudioProcessor (BusesProperties()
-                     #if ! JucePlugin_IsMidiEffect
-                      #if ! JucePlugin_IsSynth
-                       .withInput  ("Input",  juce::AudioChannelSet::stereo(), true)
-                      #endif
-                       .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
-                     #endif
-                       )
+    : AudioProcessor(BusesProperties()
+#if ! JucePlugin_IsMidiEffect
+#if ! JucePlugin_IsSynth
+        .withInput("Input", juce::AudioChannelSet::stereo(), true)
+#endif
+        .withOutput("Output", juce::AudioChannelSet::stereo(), true)
+#endif
+    ), apvts(*this, nullptr, "Parameters", createParams())
 #endif
 {
 }
@@ -188,4 +188,54 @@ void BasicGeneratorAudioProcessor::setStateInformation (const void* data, int si
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new BasicGeneratorAudioProcessor();
+}
+
+juce::AudioProcessorValueTreeState::ParameterLayout BasicGeneratorAudioProcessor::createParams()
+{
+    std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+
+    // SYNTH PARAMS
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        "FREQ",
+        "Frequency",
+        juce::NormalisableRange<float>{200.0f, 5000.0f, 0.1f, 0.6f},
+        500.0f
+        ));
+
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        "GAIN",
+        "Gain",
+        juce::NormalisableRange<float>{0.0f, 1.0f, 0.01f},
+        0.3f
+        ));
+
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        "CUTOFF",
+        "Cutoff",
+        juce::NormalisableRange<float>{20.0f, 20000.0f, 0.1f, 0.6f},
+        1000.0f
+        ));
+
+    params.push_back(std::make_unique<juce::AudioParameterBool>(
+        "GATE",
+        "Gate",
+        false
+        ));
+
+    // EFFECT PARAMS
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        "DELAY",
+        "Delay",
+        juce::NormalisableRange<float>{0.0f, 1.0f, 0.01f},
+        0.5f
+        ));
+
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        "FEEDBACK",
+        "Feedback",
+        juce::NormalisableRange<float>{0.0f, 1.0f, 0.01f},
+        0.5f
+        ));
+
+    return { params.begin(), params.end() };
 }
