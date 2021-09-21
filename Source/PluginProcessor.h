@@ -57,6 +57,7 @@ public:
     juce::AudioProcessorValueTreeState apvts;
 
 private:
+    PluginGraph graph;
     juce::AudioProcessorValueTreeState::ParameterLayout createParams();
 
     //==============================================================================

@@ -12,6 +12,8 @@
 
 void PluginGraph::prepareToPlay(double sampleRate, int samplesPerBlock, int outputChannels)
 {
+    fSynth.prepareToPlay(sampleRate, samplesPerBlock, outputChannels);
+
     isPrepared = true;
 }
 
