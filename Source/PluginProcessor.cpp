@@ -141,9 +141,11 @@ void BasicGeneratorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffe
     auto& gate = *apvts.getRawParameterValue("GATE");
 
     // EFFECT
-
+    auto& delay = *apvts.getRawParameterValue("DELAY");
+    auto& feedback = *apvts.getRawParameterValue("FEEDBACK");
 
     graph.updateSynthPararms(freq, gain, cutoff, gate);
+    graph.updateEffectParams(delay, feedback);
 
     graph.renderNextBlock(buffer, 0, buffer.getNumSamples());
 }
