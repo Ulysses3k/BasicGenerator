@@ -10,10 +10,10 @@
 
 #include "PluginGraph.h"
 
-void PluginGraph::prepareToPlay(double sampleRate, int samplesPerBlock, int outputChannels)
+void PluginGraph::prepareToPlay(double sampleRate, int samplesPerBlock)//, int outputChannels)
 {
-    fSynth.prepareToPlay(sampleRate, samplesPerBlock, outputChannels);
-    fEffect.prepareToPlay(sampleRate, samplesPerBlock, outputChannels);
+    fSynth.prepareToPlay(sampleRate, samplesPerBlock);//, outputChannels);
+    fEffect.prepareToPlay(sampleRate, samplesPerBlock);// , outputChannels);
 
     isPrepared = true;
 }
@@ -24,12 +24,12 @@ void PluginGraph::releaseResources()
     fEffect.releaseResources();
 }
 
-void PluginGraph::renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int startSample, int numSamples)
+void PluginGraph::renderNextBlock(juce::AudioBuffer<float>& outputBuffer)//, int startSample, int numSamples)
 {
     jassert(isPrepared);
 
-    //fSynth.getNextAudioBlock(outputBuffer);
-    fEffect.getNextAudioBlock(outputBuffer);
+    fSynth.getNextAudioBlock(outputBuffer);
+    //fEffect.getNextAudioBlock(outputBuffer);
 }
 
 void PluginGraph::updateSynthPararms(const float freq, const float gain, const float cutoff, const bool gate)

@@ -11,7 +11,7 @@
 #include "effectDSP.h"
 #include "faustDSP/FaustEffect.h"
 
-void effectDSP::prepareToPlay(double sampleRate, int samplesPerBlock, int outputChannels)
+void effectDSP::prepareToPlay(double sampleRate, int samplesPerBlock)// , int outputChannels)
 {
     fDSP = new mydsp();
     fDSP->init(sampleRate);

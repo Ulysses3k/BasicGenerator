@@ -11,7 +11,7 @@
 #include "synthDSP.h"
 #include "faustDSP/FaustSynth.h"
 
-void synthDSP::prepareToPlay(double sampleRate, int samplesPerBlock, int outputChannels)
+void synthDSP::prepareToPlay(double sampleRate, int samplesPerBlock)// , int outputChannels)
 {
     fDSP = new mydsp();
     fDSP->init(sampleRate);

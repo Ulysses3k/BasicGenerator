@@ -93,7 +93,7 @@ void BasicGeneratorAudioProcessor::changeProgramName (int index, const juce::Str
 //==============================================================================
 void BasicGeneratorAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    graph.prepareToPlay(sampleRate, samplesPerBlock, getTotalNumOutputChannels());
+    graph.prepareToPlay(sampleRate, samplesPerBlock);// , getTotalNumOutputChannels());
 }
 
 void BasicGeneratorAudioProcessor::releaseResources()
@@ -130,8 +130,8 @@ bool BasicGeneratorAudioProcessor::isBusesLayoutSupported (const BusesLayout& la
 void BasicGeneratorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
-    auto totalNumInputChannels  = getTotalNumInputChannels();
-    auto totalNumOutputChannels = getTotalNumOutputChannels();
+    //auto totalNumInputChannels  = getTotalNumInputChannels();
+    //auto totalNumOutputChannels = getTotalNumOutputChannels();
 
     // SYNTH
     auto& freq = *apvts.getRawParameterValue("FREQ");
@@ -146,7 +146,7 @@ void BasicGeneratorAudioProcessor::processBlock (juce::AudioBuffer<float>& buffe
     graph.updateSynthPararms(freq, gain, cutoff, gate);
     graph.updateEffectParams(delay, feedback);
 
-    graph.renderNextBlock(buffer, 0, buffer.getNumSamples());
+    graph.renderNextBlock(buffer);// , 0, buffer.getNumSamples());
 }
 
 //==============================================================================
