@@ -98,8 +98,7 @@ void BasicGeneratorAudioProcessor::prepareToPlay (double sampleRate, int samples
 
 void BasicGeneratorAudioProcessor::releaseResources()
 {
-    // When playback stops, you can use this as an opportunity to free up any
-    // spare memory, etc.
+    graph.releaseResources();
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations

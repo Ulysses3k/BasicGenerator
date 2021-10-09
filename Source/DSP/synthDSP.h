@@ -19,7 +19,7 @@ class synthDSP
 public:
     void prepareToPlay(double sampleRate, int samplesPerBlock, int outputChannels);
     void releaseResources();
-    void getNextAudioBlock(juce::AudioBuffer<float> block);
+    void getNextAudioBlock(juce::AudioBuffer<float>& block);
 
     void setFreq(float freq);
     void setGain(float gain);

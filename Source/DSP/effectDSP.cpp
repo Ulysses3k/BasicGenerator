@@ -39,7 +39,7 @@ void effectDSP::releaseResources()
     delete[] outputs;
 }
 
-void effectDSP::getNextAudioBlock(juce::AudioBuffer<float> block)
+void effectDSP::getNextAudioBlock(juce::AudioBuffer<float>& block)
 {
     for (int channel = 0; channel < 2; ++channel)
     {

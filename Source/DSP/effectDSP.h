@@ -19,7 +19,7 @@ class effectDSP
 public:
     void prepareToPlay(double sampleRate, int samplesPerBlock, int outputChannels);
     void releaseResources();
-    void getNextAudioBlock(juce::AudioBuffer<float> block);
+    void getNextAudioBlock(juce::AudioBuffer<float>& block);
 
     void setDelay(float delay);
     void setFeedback(float feedback);

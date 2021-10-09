@@ -20,14 +20,16 @@ void PluginGraph::prepareToPlay(double sampleRate, int samplesPerBlock, int outp
 
 void PluginGraph::releaseResources()
 {
-
+    fSynth.releaseResources();
+    fEffect.releaseResources();
 }
 
 void PluginGraph::renderNextBlock(juce::AudioBuffer<float>& outputBuffer, int startSample, int numSamples)
 {
     jassert(isPrepared);
 
-    fSynth.getNextAudioBlock(outputBuffer);
+    //fSynth.getNextAudioBlock(outputBuffer);
+    fEffect.getNextAudioBlock(outputBuffer);
 }
 
 void PluginGraph::updateSynthPararms(const float freq, const float gain, const float cutoff, const bool gate)

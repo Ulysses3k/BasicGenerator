@@ -35,7 +35,7 @@ void synthDSP::releaseResources()
     delete[] outputs;
 }
 
-void synthDSP::getNextAudioBlock(juce::AudioBuffer<float> block)
+void synthDSP::getNextAudioBlock(juce::AudioBuffer<float>& block)
 {
     fDSP->compute(block.getNumSamples(), NULL, outputs);
 
