@@ -17,9 +17,6 @@
 class PluginGraph
 {
 public:
-    using AudioGraphIOProcessor = juce::AudioProcessorGraph::AudioGraphIOProcessor;
-    using Node = juce::AudioProcessorGraph::Node;
-
     void prepareToPlay(double sampleRate, int samplesPerBlock);
     void releaseResources();
     void renderNextBlock(juce::AudioBuffer<float>& outputBuffer, juce::MidiBuffer& midiMessages);
@@ -30,19 +27,6 @@ public:
 private:
     synthDSP fSynth;
     effectDSP fEffect;
-
-    void initialiseGraph();
-    void connectAudioNodes();
-    void connectMidiNodes();
-
-    std::unique_ptr<juce::AudioProcessorGraph> mainProcessor;
-
-    Node::Ptr audioOutputNode;
-    Node::Ptr midiInputNode;
-
-    Node::Ptr synthOutputNode;
-    Node::Ptr effectInputNode;
-    Node::Ptr effectOutputNode;
 
     bool isPrepared{ false };
 };

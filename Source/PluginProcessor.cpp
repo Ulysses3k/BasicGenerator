@@ -98,7 +98,7 @@ void BasicGeneratorAudioProcessor::prepareToPlay (double sampleRate, int samples
 
 void BasicGeneratorAudioProcessor::releaseResources()
 {
-    //graph.releaseResources();
+    graph.releaseResources();
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
