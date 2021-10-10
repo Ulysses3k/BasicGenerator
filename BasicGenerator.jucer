@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="Dxjq0b" name="BasicGenerator" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginCharacteristicsValue="pluginWantsMidiIn"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
               pluginVST3Category="Instrument" cppLanguageStandard="17">
   <MAINGROUP id="RdFT8I" name="BasicGenerator">
     <GROUP id="{51A43B03-8022-F089-6A85-825370598D2D}" name="Source">

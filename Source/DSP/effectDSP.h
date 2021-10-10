@@ -17,7 +17,7 @@ class MapUI;
 class effectDSP
 {
 public:
-    void prepareToPlay(double sampleRate, int samplesPerBlock);// , int outputChannels);
+    void prepareToPlay(double sampleRate, int samplesPerBlock);
     void releaseResources();
     void getNextAudioBlock(juce::AudioBuffer<float>& block);
 
