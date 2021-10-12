@@ -28,5 +28,11 @@ private:
     synthDSP fSynth;
     effectDSP fEffect;
 
+    juce::AudioBuffer<float> synthOut;
+    juce::AudioBuffer<float> effectIn;
+    juce::AudioBuffer<float> effectOut;
+
+    int writePosition{ 0 };
+
     bool isPrepared{ false };
 };
